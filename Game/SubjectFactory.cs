@@ -9,21 +9,22 @@ namespace Game
 {
     public class SubjectFactory
     {
-
-        //Arhitektura i organizacija na kompjuteri
-        private static Subject AOK=new Subject(Color.Blue,"Архитектура и организација на копмјутери",Questions.AokQuestion,Questions.AokAnswers);
         //Operativni sistemi
         private static Subject OS=new Subject(Color.Black,"Оперативни системи",Questions.OsQuestion,Questions.OsAnswers);
-        //strukturno programiranje
-        private static Subject SP= new Subject(Color.Green, "Софтверско инженерство", Questions.SpQuestion, Questions.SpAnswers);
+        //Arhitektura i organizacija na kompjuteri
+        private static Subject AOK = new Subject(Color.Blue, "Архитектура и организација на копмјутери", Questions.AokQuestion, Questions.AokAnswers);
         //Softversko inzinerstvo
         private static Subject SI=new Subject(Color.Red, "Софтверско инжинерство", Questions.SiQuestion, Questions.SiAnswers);
+        //strukturno programiranje
+        private static Subject SP = new Subject(Color.Green, "Софтверско инженерство", Questions.SpQuestion, Questions.SpAnswers);
+        //Marketing
+        private static Subject MA = new Subject(Color.Yellow, "Маркетинг", Questions.MaQuestion, Questions.MaAnswers);
 
         private static Random Random = new Random();
-        public static Color[] possibleColors { get; set; } = { Color.Red, Color.Yellow, Color.Blue, Color.Pink };
+        public static Color[] possibleColors { get; set; } = { Color.Black, Color.Blue, Color.Red, Color.Green, Color.Yellow };
         
         private static Dictionary<Color, Subject> ColorsToSubjects { get; set; } = new Dictionary<Color, Subject>() { { Color.Black, OS },
-        { Color.Red, SI },{ Color.Green,SP},{Color.Blue,AOK } };
+        { Color.Blue, OS }, { Color.Red, SI },{ Color.Green,SP},{Color.Yellow,MA } };
 
         //return a Subject
         public static Subject GetSubject()
@@ -64,5 +65,4 @@ namespace Game
             }
         }
     }
-}
 }
