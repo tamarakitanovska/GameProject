@@ -14,7 +14,13 @@ namespace Game
     {
         public Form1()
         {
+            this.BackgroundImage = Properties.Resources.sky;
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

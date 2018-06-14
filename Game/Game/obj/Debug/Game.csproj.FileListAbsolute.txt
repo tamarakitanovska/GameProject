@@ -1,0 +1,10 @@
+C:\Users\Tamara\Desktop\GameProject\Game\Game\bin\Debug\Game.exe.config
+C:\Users\Tamara\Desktop\GameProject\Game\Game\bin\Debug\Game.exe
+C:\Users\Tamara\Desktop\GameProject\Game\Game\bin\Debug\Game.pdb
+C:\Users\Tamara\Desktop\GameProject\Game\Game\obj\Debug\Game.csprojResolveAssemblyReference.cache
+C:\Users\Tamara\Desktop\GameProject\Game\Game\obj\Debug\Game.Properties.Resources.resources
+C:\Users\Tamara\Desktop\GameProject\Game\Game\obj\Debug\Game.csproj.GenerateResource.cache
+C:\Users\Tamara\Desktop\GameProject\Game\Game\obj\Debug\Game.csproj.CoreCompileInputs.cache
+C:\Users\Tamara\Desktop\GameProject\Game\Game\obj\Debug\Game.exe
+C:\Users\Tamara\Desktop\GameProject\Game\Game\obj\Debug\Game.pdb
+C:\Users\Tamara\Desktop\GameProject\Game\Game\obj\Debug\Game.Form1.resources
