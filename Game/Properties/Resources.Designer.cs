@@ -63,9 +63,9 @@ namespace Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sky {
+        internal static System.Drawing.Bitmap sky_airplane {
             get {
-                object obj = ResourceManager.GetObject("sky", resourceCulture);
+                object obj = ResourceManager.GetObject("sky_airplane", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
