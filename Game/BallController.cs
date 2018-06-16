@@ -11,60 +11,39 @@ namespace Game
     {
         //Gi cuvame topcinjata sto vo momentot postojat
         public List<Ball> Balls { get; set; }
-
-        public Color Color { get; set; }
-
-        public int state { get; set; }
-
+        public List<FireBall> FireBalls { get; set; }      
         public int Width { get; set; }
         public int Left { get; set; }
         public int DownLine { get; set; }
 
-        public Random Random = new Random();
+        public static  Random Random = new Random();
 
-        public BallController()
+        public BallController(int Left, int Width,int h)
         {
+            FireBalls = new List<FireBall>();
+            this.Left = Left;
+            this.Width = Width;
+            this.DownLine = h;
             Balls = new List<Ball>();
         }
 
-        public void addBall(int Left, int Width)
+
+        public void addFireBall()
         {
-            this.Left = Left;
-            this.Width = Width;
+            //create the FireBall with Center and angle for moving depending on the state of the plane
+            FireBall fireBall = new FireBall(Plane.getCenter(), Plane.getAngle());
+            FireBalls.Add(fireBall);
+        }
+        public void addBall()
+        {
             //to be implemented 
             //choose what type of ball
             //x coordinate of the center
-            int x = Random.Next(Left+Ball.RADIUS*2, Width-Ball.RADIUS*2);
+            int x = Random.Next(Left + Ball.RADIUS, Width - Ball.RADIUS*2);
             //y coordinate of the center
-            int y = -Ball.RADIUS * 2;
-
-            state = Random.Next(4);
-            if (state == 0)
-            {
-                //Marketing
-                Color = Color.Yellow;
-            }
-            else if (state == 1)
-            {
-                //Strukturno
-                Color = Color.Green;
-            }
-            else if (state == 2)
-            {
-                //Softversko
-                Color = Color.Red;
-            }
-            else if (state == 3)
-            {
-                //AOK
-                Color = Color.Blue;
-            }
-            else if (state == 4)
-            {
-                //Operativni
-                Color = Color.Black;
-            }
-            Ball newBall = new Ball(new Point(x, y),Color);
+            int y = -Ball.RADIUS * 2;        
+            
+            Ball newBall = new Ball(new Point(x, y));
             Balls.Add(newBall);
 
         }
@@ -73,6 +52,11 @@ namespace Game
             for (int i = 0; i < Balls.Count; i++)
             {
                     Balls[i].Draw(g);
+            }
+
+            for (int i = 0; i < FireBalls.Count; i++)
+            {
+                FireBalls[i].Draw(g);
             }
         }
 
@@ -85,9 +69,30 @@ namespace Game
 
             for (int i = 0; i < Balls.Count; i++)
             {
-                if (Balls[i].TheBallHasFallen(DownLine))
+                for (int j = 0; j < FireBalls.Count; j++)
+                {
+                    if(Balls[i].IsHit(FireBalls[j].Center))
+                    {
+                        Balls[i].toBeDeleted = true;
+                        FireBalls[j].toBeDeleted = true;
+                    }
+
+                }
+            }
+
+            for (int i = 0; i < Balls.Count; i++)
+            {
+                if (Balls[i].TheBallHasFallen(DownLine) || Balls[i].toBeDeleted)
                 {
                     Balls.Remove(Balls[i]);
+                }
+            }
+
+            for (int i = 0; i < FireBalls.Count; i++)
+            {
+                if (FireBalls[i].toBeDeleted || FireBalls[i].isOutOfFrame(Width,0,0))
+                {
+                    FireBalls.Remove(FireBalls[i]);
                 }
             }
         }
@@ -99,6 +104,11 @@ namespace Game
                 ball.Move();
             }
 
+            foreach (var ball in FireBalls)
+            {
+                //moving each ball
+                ball.Move();
+            }
             //delete the balls that had fallen(crossed the downline)
             ValidateBalls(DownLine);
         }

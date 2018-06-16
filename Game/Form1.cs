@@ -20,16 +20,18 @@ namespace Game
         private int generateBall;
         private String FileName;
         private bool Paused;
+        private Plane Plane;
         public Form1()
         {
             InitializeComponent();
-            this.BackgroundImage = Properties.Resources.sky_airplane;
+            Plane = new Plane();
+            this.BackgroundImage = Plane.getImage();
             BackgroundImageLayout = ImageLayout.Stretch;
-            BallController = new BallController();
+            BallController = new BallController(0,this.Width,this.Height);
             this.DoubleBuffered = true;
             Paused = false;
             timer = new Timer();
-            timer.Interval = 1000;
+            timer.Interval = 250;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Enabled = true;
             timer.Start();
@@ -42,10 +44,12 @@ namespace Game
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            if (generateBall % 10 == 0)
+            if (generateBall % 7 == 0)
             {
-                BallController.addBall(this.Left, this.Width);
+                BallController.addBall();
             }
+            if(generateBall%4==0)
+                BallController.addFireBall();
             ++generateBall;
             BallController.MoveBall(this.Height);
             Invalidate();
@@ -57,6 +61,7 @@ namespace Game
         }
         private void saveFile()
         {
+            //Excepiton handlers needed
             if (FileName == null)
             {
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -130,6 +135,29 @@ namespace Game
 
         private void toolStripStatusLabel1_Click(object sender, EventArgs e)
         {
+
+        }
+
+       
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode==Keys.Left)
+            {
+                //0 for left
+                Plane.changeState(0);
+                this.BackgroundImage = Plane.getImage();
+                Invalidate();
+
+            }
+            else if(e.KeyCode==Keys.Right)
+            {
+                Plane.changeState(1);
+                this.BackgroundImage = Plane.getImage();
+                Invalidate();
+            }
+
+
 
         }
     }

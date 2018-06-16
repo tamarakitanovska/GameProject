@@ -18,3 +18,8 @@ C:\Users\Laze\GameProject1\Game\obj\Debug\Game.csproj.GenerateResource.Cache
 C:\Users\Laze\GameProject1\Game\obj\Debug\Game.csproj.CoreCompileInputs.cache
 C:\Users\Laze\GameProject1\Game\obj\Debug\Game.exe
 C:\Users\Laze\GameProject1\Game\obj\Debug\Game.pdb
+C:\Users\Laze\GameProject1\Game\bin\Debug\Interop.WMPLib.dll
+C:\Users\Laze\GameProject1\Game\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\Laze\GameProject1\Game\obj\Debug\Interop.WMPLib.dll
+C:\Users\Laze\GameProject1\Game\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\Laze\GameProject1\Game\obj\Debug\Game.csproj.ResolveComReference.cache

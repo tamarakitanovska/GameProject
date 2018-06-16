@@ -12,24 +12,26 @@ namespace Game
     {
         public Point Center { get; set; }
         public static Random random = new Random();
-        public Color Color { get; set; }
-        public static readonly int RADIUS = 40;
-        public static readonly int SPEED = 10;
-        public Ball(Point Center, Color Color)
+        public SubjectFactory.Subject Subject;
+        public static readonly int RADIUS = 25;
+        public static readonly int SPEED = 25;
+        public bool toBeDeleted { get; set; }
+        public Ball(Point Center)
         {
-            Center = new Point();
-            this.Color = Color;
+            Subject = SubjectFactory.GetSubject();
+            this.Center = Center;
+            
             
         }
         public void Draw(Graphics g)
         {
-            Brush b = new SolidBrush(Color);
+            Brush b = new SolidBrush(Subject.Color);
             g.FillEllipse(b, Center.X - RADIUS, Center.Y - RADIUS, RADIUS * 2, RADIUS * 2);
             b.Dispose();
         }
         public void Move()
         {
-            Center = new Point(Center.X+SPEED, Center.Y);
+            Center = new Point(Center.X, Center.Y + SPEED);
         }
 
 
