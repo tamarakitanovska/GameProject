@@ -303,5 +303,18 @@ namespace Game
         {
 
         }
+
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+            int withdDifference = (this.Width - BallController.Width)/2;
+            int heightDifference = (this.Height - BallController.DownLine)/2;
+            if (withdDifference < 0)
+                withdDifference *= -1;
+            if (heightDifference < 0)
+                heightDifference *= -1;
+            Plane.handleResize(withdDifference, heightDifference);
+            BallController.DownLine = this.Height;
+            BallController.Width = this.Width;
+        }
     }
 }

@@ -12,8 +12,8 @@ namespace Game
     {
         
 
-        public static int Radius { get; set; } = 11;
-        public static int Speed { get; set; } = 19;
+        public static int Radius { get; set; } = 13;
+        public static int Speed { get; set; } = 25;
 
         public int VelcovityX { get; set; }
         public int VelcovityY { get; set; }

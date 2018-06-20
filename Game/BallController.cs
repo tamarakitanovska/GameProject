@@ -37,6 +37,7 @@ namespace Game
             FireBall fireBall = new FireBall(Plane.getCenter(), Plane.getAngle());
             Balls.Add(fireBall);
         }
+
         public void addFallingBall()
         {
             //to be implemented 
@@ -116,6 +117,7 @@ namespace Game
             ValidateBalls(DownLine);
         }
 
+        
         public void Hit(int x, int y)
         {
             for (int i = 0; i < Balls.Count; i++)

@@ -98,5 +98,16 @@ namespace Game
         {
             BallController.addFireBall();
         }
+
+        public void handleResize(int diffW, int diffH)
+        {
+            CenterPlane = new Point(CenterPlane.X + diffW, CenterPlane.Y + diffH);
+            LeftPlane = new Point(LeftPlane.X + diffW, LeftPlane.Y + diffH);
+            LeftLeftPlane = new Point(LeftLeftPlane.X + diffW, LeftLeftPlane.Y + diffH);
+            RightPlane = new Point(RightPlane.X + diffW, RightPlane.Y + diffH);
+            RightRightPlane = new Point(RightRightPlane.X + diffW, RightRightPlane.Y + diffH);
+            CenterArray = new Point[]{ LeftLeftPlane, LeftPlane, CenterPlane, RightPlane, RightRightPlane };
+
+        }
     }
 }
