@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    public class FireBall
+    [Serializable]
+    public class FireBall :Ball
     {
-        public Point Center { get; set; }
+        
 
         public static int Radius { get; set; } = 11;
         public static int Speed { get; set; } = 19;
@@ -27,25 +28,35 @@ namespace Game
             VelcovityY= (int)(Math.Sin(angleInRadians)*Speed);
         }
 
-        public void Move()
+        public override void Move()
         {
             Center = new Point(Center.X + VelcovityX, Center.Y - VelcovityY);
         }
 
-        public void Draw(Graphics g)
+        public override void Draw(Graphics g)
         {
             SolidBrush b = new SolidBrush(Color.Red);
             g.FillEllipse(b, Center.X - Radius, Center.Y - Radius, 2 * Radius, 2 * Radius);
             b.Dispose();
         }
 
-        public bool isOutOfFrame(int width,int left, int top)
+        public override bool isOutOfFrame(int downline, int width, int left, int top)
         {
             if (Center.X + Radius <= left || Center.X - Radius >= width)
                 return true;
             if (Center.Y + Radius <= top)
                 return true;
             return false;
+        }
+
+        public override bool isFireBall()
+        {
+            return true;
+        }
+
+        public override SubjectFactory.Subject getSubject()
+        {
+            throw new NotImplementedException();
         }
     }
 }

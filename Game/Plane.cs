@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Game
 {
+    [Serializable]
     class Plane
     {
         //the plane may be in 5 different states
@@ -17,20 +18,26 @@ namespace Game
         //4 for full right
         public static int State { get; set; }
 
-
+        public BallController BallController { get; set; }
         //the whole image with a single position of the plane
         //in every picture the plane has a different possition
         public static List<Bitmap> Images { get; set; }
-
-        public Plane()
+        
+        private System.Resources.ResourceManager RM = 
+            new System.Resources.ResourceManager("Game.Properties.Resources", typeof(Game.Properties.Resources).Assembly);
+        public Plane(BallController ballController )
         {
 
             //At the beginnig the state is straight
-            State = 0;
+            State = 2;
             Images = new List<Bitmap>();
-            Images.Add(new Bitmap(@"C:\Users\Laze\Desktop\GameImages\LEft.png"));
-            Images.Add(new Bitmap(@"C:\Users\Laze\Desktop\GameImages\Pravo.png"));
-            Images.Add(new Bitmap(@"C:\Users\Laze\Desktop\GameImages\Desno.png"));
+            Images.Add(Game.Properties.Resources.leftleftplane);
+            Images.Add(Game.Properties.Resources.leftplane);
+            Images.Add(Game.Properties.Resources.plane);
+            Images.Add(Game.Properties.Resources.rightplane);
+            Images.Add(Game.Properties.Resources.rightrightplane);
+
+            BallController = ballController;
         }
 
         public Bitmap getImage()
@@ -48,7 +55,7 @@ namespace Game
 
         private void changeRight()
         {
-            if (State < 2)
+            if (State < 4)
                 State = State + 1;
         }
 
@@ -65,9 +72,9 @@ namespace Game
 
         public static int getAngle()
         {
-            if (State == 0)
+            if (State == 1)
                 return 135;
-            else if (State == 1)
+            else if (State == 2)
                 return 90;
             else
             {
@@ -85,9 +92,9 @@ namespace Game
                 return new Point(541, 457);
             }
         }
-        public void fireBall()
+        public void fireBallShoot()
         {
-
+            BallController.addFireBall();
         }
     }
 }

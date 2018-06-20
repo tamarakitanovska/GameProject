@@ -63,9 +63,49 @@ namespace Game.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap sky_airplane {
+        internal static System.Drawing.Bitmap leftleftplane {
             get {
-                object obj = ResourceManager.GetObject("sky_airplane", resourceCulture);
+                object obj = ResourceManager.GetObject("leftleftplane", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap leftplane {
+            get {
+                object obj = ResourceManager.GetObject("leftplane", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap plane {
+            get {
+                object obj = ResourceManager.GetObject("plane", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rightplane {
+            get {
+                object obj = ResourceManager.GetObject("rightplane", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rightrightplane {
+            get {
+                object obj = ResourceManager.GetObject("rightrightplane", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

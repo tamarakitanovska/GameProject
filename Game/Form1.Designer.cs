@@ -97,6 +97,7 @@
             this.saveToolStripButton.Name = "saveToolStripButton";
             this.saveToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.saveToolStripButton.Text = "&Save";
+            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
             // 
             // printToolStripButton
             // 
@@ -171,6 +172,7 @@
             this.statusStrip1.Size = new System.Drawing.Size(936, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.Paint += new System.Windows.Forms.PaintEventHandler(this.statusStrip1_Paint);
             // 
             // toolStripStatusLabel1
             // 
@@ -181,8 +183,9 @@
             // 
             // pointsLabel
             // 
+            this.pointsLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.pointsLabel.Name = "pointsLabel";
-            this.pointsLabel.Size = new System.Drawing.Size(13, 17);
+            this.pointsLabel.Size = new System.Drawing.Size(14, 17);
             this.pointsLabel.Text = "0";
             // 
             // Form1
@@ -193,8 +196,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Text = "SkyWars";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.toolStrip1.ResumeLayout(false);

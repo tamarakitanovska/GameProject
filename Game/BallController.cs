@@ -7,24 +7,27 @@ using System.Threading.Tasks;
 
 namespace Game
 {
+    [Serializable]
     public class BallController
     {
         //Gi cuvame topcinjata sto vo momentot postojat
         public List<Ball> Balls { get; set; }
-        public List<FireBall> FireBalls { get; set; }      
+        public List<Ball> BallsForQuestion { get; set; }
         public int Width { get; set; }
         public int Left { get; set; }
         public int DownLine { get; set; }
+        public  int ballsKilled { get; set;  }
 
         public static  Random Random = new Random();
 
         public BallController(int Left, int Width,int h)
         {
-            FireBalls = new List<FireBall>();
+            ballsKilled = 0;
+            Balls = new List<Ball>();
             this.Left = Left;
             this.Width = Width;
             this.DownLine = h;
-            Balls = new List<Ball>();
+            BallsForQuestion = new List<Ball>();
         }
 
 
@@ -32,9 +35,9 @@ namespace Game
         {
             //create the FireBall with Center and angle for moving depending on the state of the plane
             FireBall fireBall = new FireBall(Plane.getCenter(), Plane.getAngle());
-            FireBalls.Add(fireBall);
+            Balls.Add(fireBall);
         }
-        public void addBall()
+        public void addFallingBall()
         {
             //to be implemented 
             //choose what type of ball
@@ -43,7 +46,7 @@ namespace Game
             //y coordinate of the center
             int y = -Ball.RADIUS * 2;        
             
-            Ball newBall = new Ball(new Point(x, y));
+            Ball newBall = new FallingBall(new Point(x, y));
             Balls.Add(newBall);
 
         }
@@ -54,47 +57,51 @@ namespace Game
                     Balls[i].Draw(g);
             }
 
-            for (int i = 0; i < FireBalls.Count; i++)
-            {
-                FireBalls[i].Draw(g);
-            }
+           
         }
 
         //Validating the existing balls
         //Removing the balls that are not in valid state
-
-
+      
         private void ValidateBalls(int DownLine)
         {
 
             for (int i = 0; i < Balls.Count; i++)
             {
-                for (int j = 0; j < FireBalls.Count; j++)
+                for (int j = i+1; j < Balls.Count; j++)
                 {
-                    if(Balls[i].IsHit(FireBalls[j].Center))
+                    if(Balls[i].IsHit(Balls[j].Center))
                     {
-                        Balls[i].toBeDeleted = true;
-                        FireBalls[j].toBeDeleted = true;
+                        if (Balls[i].isFireBall() && Balls[j].isFireBall())
+                            continue;
+                        Balls[i].ToBeDeleted = true;
+                        Balls[j].ToBeDeleted = true;
+                        ballsKilled++;
                     }
 
                 }
             }
 
+            for(int i=0;i<BallsForQuestion.Count;++i)
+            {
+                if (BallsForQuestion[i].ToBeDeleted)
+                    BallsForQuestion.RemoveAt(i);
+            }
+            
             for (int i = 0; i < Balls.Count; i++)
             {
-                if (Balls[i].TheBallHasFallen(DownLine) || Balls[i].toBeDeleted)
+                if(!Balls[i].isFireBall() && Balls[i].isOutOfFrame(DownLine, Width, 0, 0))
+                {
+                    BallsForQuestion.Add(Balls[i]);
+                    Balls.Remove(Balls[i]);
+                }
+                if (Balls[i].ToBeDeleted )
                 {
                     Balls.Remove(Balls[i]);
                 }
             }
 
-            for (int i = 0; i < FireBalls.Count; i++)
-            {
-                if (FireBalls[i].toBeDeleted || FireBalls[i].isOutOfFrame(Width,0,0))
-                {
-                    FireBalls.Remove(FireBalls[i]);
-                }
-            }
+            
         }
         public void MoveBall(int DownLine)
         {
@@ -104,11 +111,7 @@ namespace Game
                 ball.Move();
             }
 
-            foreach (var ball in FireBalls)
-            {
-                //moving each ball
-                ball.Move();
-            }
+            
             //delete the balls that had fallen(crossed the downline)
             ValidateBalls(DownLine);
         }

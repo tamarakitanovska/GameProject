@@ -23,3 +23,4 @@ C:\Users\Laze\GameProject1\Game\bin\Debug\AxInterop.WMPLib.dll
 C:\Users\Laze\GameProject1\Game\obj\Debug\Interop.WMPLib.dll
 C:\Users\Laze\GameProject1\Game\obj\Debug\AxInterop.WMPLib.dll
 C:\Users\Laze\GameProject1\Game\obj\Debug\Game.csproj.ResolveComReference.cache
+C:\Users\Laze\GameProject1\Game\obj\Debug\Game.Question.resources

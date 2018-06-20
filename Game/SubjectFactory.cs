@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Game
 {
+    [Serializable]
     public class SubjectFactory
     {
         //Operativni sistemi
@@ -35,7 +36,7 @@ namespace Game
             return toReturn;              
             
         }
-
+        [Serializable]
         public class Subject
         {
 

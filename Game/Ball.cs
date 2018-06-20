@@ -8,42 +8,18 @@ using System.Threading.Tasks;
 namespace Game
 {
     [Serializable]
-    public class Ball
+    public abstract class Ball
     {
         public Point Center { get; set; }
-        public static Random random = new Random();
-        public SubjectFactory.Subject Subject;
-        public static readonly int RADIUS = 25;
-        public static readonly int SPEED = 25;
-        public bool toBeDeleted { get; set; }
-        public Ball(Point Center)
-        {
-            Subject = SubjectFactory.GetSubject();
-            this.Center = Center;
-            
-            
-        }
-        public void Draw(Graphics g)
-        {
-            Brush b = new SolidBrush(Subject.Color);
-            g.FillEllipse(b, Center.X - RADIUS, Center.Y - RADIUS, RADIUS * 2, RADIUS * 2);
-            b.Dispose();
-        }
-        public void Move()
-        {
-            Center = new Point(Center.X, Center.Y + SPEED);
-        }
+        public static int RADIUS = 25;
+        public static int SPEED = 25;
+
+        public bool ToBeDeleted { get; set; }
+        public abstract void Draw(Graphics g);
+
+        public abstract void Move();
 
 
-
-        public bool TheBallHasFallen(int downLine)
-        {
-            if(Center.Y-RADIUS>=downLine)
-            {
-                return true;
-            }
-            return false;
-        }
         public bool IsHit(Point point)
         {
             var distance = Math.Abs(Center.X - point.X) + Math.Abs(Center.Y - point.Y);
@@ -51,5 +27,11 @@ namespace Game
                 return true;
             return false;
         }
+
+        public abstract bool isOutOfFrame(int downline, int width, int left, int top);
+
+        public abstract bool isFireBall();
+
+        public abstract SubjectFactory.Subject getSubject();
     }
 }
