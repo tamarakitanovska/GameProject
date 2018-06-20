@@ -35,19 +35,20 @@
             // 
             // Question1
             // 
-            this.Question1.AutoSize = true;
-            this.Question1.Location = new System.Drawing.Point(85, 44);
+            this.Question1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Question1.Location = new System.Drawing.Point(0, 0);
             this.Question1.Name = "Question1";
-            this.Question1.Size = new System.Drawing.Size(55, 13);
+            this.Question1.Size = new System.Drawing.Size(437, 225);
             this.Question1.TabIndex = 0;
             this.Question1.Text = "Question1";
             this.Question1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.Question1.Click += new System.EventHandler(this.Question1_Click);
             // 
             // Answer1
             // 
-            this.Answer1.Location = new System.Drawing.Point(65, 178);
+            this.Answer1.Location = new System.Drawing.Point(36, 141);
             this.Answer1.Name = "Answer1";
-            this.Answer1.Size = new System.Drawing.Size(75, 23);
+            this.Answer1.Size = new System.Drawing.Size(152, 39);
             this.Answer1.TabIndex = 1;
             this.Answer1.Text = "Answer1";
             this.Answer1.UseVisualStyleBackColor = true;
@@ -55,9 +56,9 @@
             // 
             // Answer2
             // 
-            this.Answer2.Location = new System.Drawing.Point(325, 178);
+            this.Answer2.Location = new System.Drawing.Point(250, 141);
             this.Answer2.Name = "Answer2";
-            this.Answer2.Size = new System.Drawing.Size(75, 23);
+            this.Answer2.Size = new System.Drawing.Size(156, 39);
             this.Answer2.TabIndex = 2;
             this.Answer2.Text = "Answer2";
             this.Answer2.UseVisualStyleBackColor = true;
@@ -67,14 +68,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(511, 261);
+            this.ClientSize = new System.Drawing.Size(437, 225);
             this.Controls.Add(this.Answer2);
             this.Controls.Add(this.Answer1);
             this.Controls.Add(this.Question1);
             this.Name = "Question";
             this.Text = "Question";
+            this.Load += new System.EventHandler(this.Question_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

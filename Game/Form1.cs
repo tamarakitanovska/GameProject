@@ -43,8 +43,25 @@ namespace Game
             }
             ++generateBall;
             BallController.MoveBall(this.Height);
-            Invalidate(true);
             askQuestion();
+            Invalidate(true);
+            checkGameOver();
+        }
+        public void checkGameOver()
+        {
+            if (BallController.ballsKilled < 0)
+            {
+                timer.Stop();
+                if (MessageBox.Show("Do tou want new game?", "nova igra", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    startNew();
+                    timer.Start();
+                }
+                else
+                {
+                    Application.Exit();
+                }
+            }
         }
 
 
@@ -54,16 +71,60 @@ namespace Game
             pause();
             for (int i=0;i< BallController.BallsForQuestion.Count;++i)
             {
-                Dictionary<String,String> dictionary= BallController.BallsForQuestion[i].getSubject().getQuestionAndAnswer();
+                SubjectFactory.Subject subject = BallController.BallsForQuestion[i].getSubject();
+                Dictionary<String,String> dictionary= subject.getQuestionAndAnswer();
 
                 String question = dictionary.Keys.First();//the question string
                 string answer = dictionary.Values.First();//the correct and wrong answers
+
                 Question Question = new Question(question,answer);
                
 
                 if(Question.ShowDialog()!=DialogResult.OK)
                 {
-                    BallController.ballsKilled--;//decrementing the points due to wrong answer
+                    if (subject.getName().Equals("Оперативни системи"))
+                    {
+                        BallController.ballsKilled -= 5;//decrementing the points due to wrong answer
+                    }
+                    else if (subject.getName().Equals("Архитектура и организација на копмјутери"))
+                    {
+                        BallController.ballsKilled -= 4;
+                    }
+                    else if (subject.getName().Equals("Софтверско инжинерство"))
+                    {
+                        BallController.ballsKilled -= 3;
+                    }
+                    else if (subject.getName().Equals("Струкрурно програмирање"))
+                    {
+                        BallController.ballsKilled -= 2;
+                    }
+                    else if (subject.getName().Equals("Маркетинг"))
+                    {
+                        BallController.ballsKilled -= 1;
+                    }
+                }
+                else
+                {
+                    if (subject.getName().Equals("Оперативни системи"))
+                    {
+                        BallController.ballsKilled += 5;//decrementing the points due to wrong answer
+                    }
+                    else if (subject.getName().Equals("Архитектура и организација на копмјутери"))
+                    {
+                        BallController.ballsKilled += 4;
+                    }
+                    else if (subject.getName().Equals("Софтверско инжинерство"))
+                    {
+                        BallController.ballsKilled += 3;
+                    }
+                    else if (subject.getName().Equals("Струкрурно програмирање"))
+                    {
+                        BallController.ballsKilled += 2;
+                    }
+                    else if (subject.getName().Equals("Маркетинг"))
+                    {
+                        BallController.ballsKilled += 1;
+                    }
                 }
                 BallController.BallsForQuestion[i].ToBeDeleted = true;
             }
@@ -236,6 +297,11 @@ namespace Game
         private void statusStrip1_Paint(object sender, PaintEventArgs e)
         {
             pointsLabel.Text = BallController.ballsKilled.ToString();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

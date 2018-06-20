@@ -17,7 +17,7 @@ namespace Game
         //Softversko inzinerstvo
         private static Subject SI=new Subject(Color.Red, "Софтверско инжинерство", Questions.SiQuestion, Questions.SiAnswers);
         //strukturno programiranje
-        private static Subject SP = new Subject(Color.Green, "Софтверско инженерство", Questions.SpQuestion, Questions.SpAnswers);
+        private static Subject SP = new Subject(Color.Green, "Струкрурно програмирање", Questions.SpQuestion, Questions.SpAnswers);
         //Marketing
         private static Subject MA = new Subject(Color.Yellow, "Маркетинг", Questions.MaQuestion, Questions.MaAnswers);
 
@@ -53,8 +53,6 @@ namespace Game
                 Color = c;
                 Questions = q;
                 Answers = a;
-
-
             }
             
             //return a pair -Question,Answer
@@ -63,6 +61,10 @@ namespace Game
                 int q = Random.Next(0, Questions.Count);
                 
                 return new Dictionary<string, string>() { { Questions.ElementAt(q), Answers.ElementAt(q) } };
+            }
+            public String getName()
+            {
+                return Name;
             }
         }
     }

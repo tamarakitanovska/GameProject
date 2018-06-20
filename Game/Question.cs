@@ -18,8 +18,9 @@ namespace Game
         {
             InitializeComponent();
             Question1.Text = q;
-            Answer1.Text = a;
-            Answer2.Text = a;
+            String[] parts = a.Split(';');
+            Answer1.Text = parts[0];
+            Answer2.Text = parts[1];
         }
 
         private void Answer1_Click(object sender, EventArgs e)
@@ -30,6 +31,14 @@ namespace Game
         private void Answer2_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
+        }
+
+        private void Question_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void Question1_Click(object sender, EventArgs e)
+        {
         }
     }
 }

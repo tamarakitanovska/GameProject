@@ -157,7 +157,7 @@
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(38, 22);
+            this.toolStripLabel1.Size = new System.Drawing.Size(45, 22);
             this.toolStripLabel1.Text = "Pause";
             this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
             // 
@@ -167,9 +167,9 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.pointsLabel});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 579);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 577);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(936, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(936, 24);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             this.statusStrip1.Paint += new System.Windows.Forms.PaintEventHandler(this.statusStrip1_Paint);
@@ -177,7 +177,7 @@
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(40, 17);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(46, 19);
             this.toolStripStatusLabel1.Text = "Points";
             this.toolStripStatusLabel1.Click += new System.EventHandler(this.toolStripStatusLabel1_Click);
             // 
@@ -185,7 +185,7 @@
             // 
             this.pointsLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.pointsLabel.Name = "pointsLabel";
-            this.pointsLabel.Size = new System.Drawing.Size(14, 17);
+            this.pointsLabel.Size = new System.Drawing.Size(17, 19);
             this.pointsLabel.Text = "0";
             // 
             // Form1
@@ -197,6 +197,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "Form1";
             this.Text = "SkyWars";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.toolStrip1.ResumeLayout(false);
