@@ -17,14 +17,19 @@ namespace Game
         //3 for half right
         //4 for full right
         public static int State { get; set; }
+        public static Point CenterPlane = new Point(454,456);
+        public static Point LeftPlane = new Point(375,467);
+        public static Point LeftLeftPlane = new Point(363,492);
+        public static Point RightPlane = new Point(540,458);
+        public static Point RightRightPlane = new Point(571,482);
 
+        public static Point []CenterArray = {LeftLeftPlane, LeftPlane, CenterPlane, RightPlane, RightRightPlane };
         public BallController BallController { get; set; }
         //the whole image with a single position of the plane
         //in every picture the plane has a different possition
         public static List<Bitmap> Images { get; set; }
         
-        private System.Resources.ResourceManager RM = 
-            new System.Resources.ResourceManager("Game.Properties.Resources", typeof(Game.Properties.Resources).Assembly);
+        
         public Plane(BallController ballController )
         {
 
@@ -72,25 +77,22 @@ namespace Game
 
         public static int getAngle()
         {
+            if (State == 0)
+                return 148;
             if (State == 1)
                 return 135;
             else if (State == 2)
                 return 90;
-            else
+            else if (State == 3)
             {
-                return 45;
+                return 50;
             }
+            else
+                return 35;
         }
         public static Point getCenter()
         {
-            if (State == 0)
-                return new Point(402,463);
-            else if (State == 1)
-                return new Point(472,446);
-            else
-            {
-                return new Point(541, 457);
-            }
+            return CenterArray[State];
         }
         public void fireBallShoot()
         {

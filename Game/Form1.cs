@@ -37,10 +37,10 @@ namespace Game
       
         private void timer_Tick(object sender, EventArgs e)
         {
-            /*if (generateBall % 12 == 0)
+            if (generateBall % 12 == 0)
             {
                 BallController.addFallingBall();
-            }*/
+            }
             ++generateBall;
             BallController.MoveBall(this.Height);
             Invalidate(true);
